@@ -1,0 +1,181 @@
+sentence,label_id
+Prescribing carbamazepine to a patient already on oral contraceptives,1
+valproate used concomitantly with carbamazepine,2
+Co-administration of lisinopril with metformin,0
+Combined therapy with MAOIs and pethidine,2
+Patient is taking amlodipine and metformin,0
+statins used concomitantly with cyclosporine,1
+SSRIs was added to ongoing linezolid therapy,2
+Simultaneous administration of theophylline and ciprofloxacin,2
+Combined therapy with phenytoin and warfarin,2
+Combined therapy with sotalol and amiodarone,2
+Concurrent use of MAOIs and pethidine in the same patient,2
+Simultaneous administration of SSRIs and linezolid,2
+Simultaneous administration of terfenadine and ketoconazole,2
+Combined therapy with metformin and amoxicillin,0
+Simultaneous administration of NSAIDs and lithium,2
+The patient received lisinopril alongside metformin,0
+Drug interaction between verapamil and digoxin,1
+Combined therapy with amlodipine and lisinopril,0
+Patient is taking warfarin and fluconazole,1
+Simultaneous administration of tramadol and fluoxetine,1
+pimozide used concomitantly with azithromycin,2
+The patient received clopidogrel alongside omeprazole,1
+omeprazole was added to ongoing clopidogrel therapy,1
+amlodipine used concomitantly with omeprazole,0
+The patient received warfarin alongside rifampicin,2
+Simultaneous administration of warfarin and phenytoin,2
+Combined therapy with terfenadine and ketoconazole,2
+Patient is taking digoxin and quinidine,2
+Co-administration of sotalol with amiodarone,2
+Combined therapy with simvastatin and ramipril,0
+Prescribing amoxicillin to a patient already on metformin,0
+Concurrent use of atorvastatin and metoprolol in the same patient,0
+Prescribing cetirizine to a patient already on paracetamol,0
+oral contraceptives used concomitantly with carbamazepine,1
+Patient is taking simvastatin and diltiazem,1
+Patient is taking ramipril and simvastatin,0
+The patient received lithium alongside NSAIDs,2
+The patient received SSRIs alongside linezolid,2
+Concurrent use of digoxin and amiodarone in the same patient,1
+Combined therapy with oral contraceptives and rifampicin,1
+Simultaneous administration of methotrexate and NSAIDs,1
+Simultaneous administration of rifampicin and oral contraceptives,1
+Concurrent use of ezetimibe and atorvastatin in the same patient,0
+The patient received warfarin alongside fluconazole,1
+digoxin was added to ongoing quinidine therapy,2
+Co-administration of carbamazepine with valproate,2
+Prescribing lisinopril to a patient already on amlodipine,0
+Prescribing theophylline to a patient already on ciprofloxacin,2
+The patient received ezetimibe alongside atorvastatin,0
+Drug interaction between simvastatin and ramipril,0
+Concurrent use of tramadol and fluoxetine in the same patient,1
+Simultaneous administration of sotalol and amiodarone,2
+amiodarone used concomitantly with digoxin,1
+The patient received oral contraceptives alongside carbamazepine,1
+The patient received trimethoprim alongside methotrexate,2
+Combined therapy with paracetamol and aspirin,0
+Co-administration of metformin with alcohol,1
+cisapride was added to ongoing clarithromycin therapy,2
+Patient is taking rifampicin and oral contraceptives,1
+Combined therapy with aspirin and paracetamol,0
+Drug interaction between amlodipine and omeprazole,0
+ezetimibe was added to ongoing atorvastatin therapy,0
+The patient received digoxin alongside amiodarone,1
+Co-administration of alcohol with metformin,1
+Co-administration of ciprofloxacin with theophylline,2
+glipizide was added to ongoing metformin therapy,0
+Combined therapy with metoprolol and atorvastatin,0
+Drug interaction between lithium and NSAIDs,2
+Prescribing metformin to a patient already on alcohol,1
+Patient is taking itraconazole and simvastatin,2
+metformin used concomitantly with glipizide,0
+The patient received verapamil alongside digoxin,1
+simvastatin used concomitantly with itraconazole,2
+sotalol was added to ongoing amiodarone therapy,2
+Combined therapy with atorvastatin and ezetimibe,0
+Concurrent use of clopidogrel and omeprazole in the same patient,1
+Prescribing tramadol to a patient already on fluoxetine,1
+Drug interaction between amlodipine and metformin,0
+ciprofloxacin was added to ongoing theophylline therapy,2
+Drug interaction between pimozide and azithromycin,2
+Drug interaction between fluconazole and warfarin,1
+metformin was added to ongoing amlodipine therapy,0
+MAOIs was added to ongoing pethidine therapy,2
+Co-administration of SSRIs with MAOIs,2
+Prescribing amlodipine to a patient already on omeprazole,0
+Co-administration of trimethoprim with methotrexate,2
+Simultaneous administration of ketoconazole and terfenadine,2
+The patient received quinidine alongside digoxin,2
+Prescribing ezetimibe to a patient already on atorvastatin,0
+Drug interaction between terfenadine and ketoconazole,2
+paracetamol was added to ongoing aspirin therapy,0
+Co-administration of potassium with lisinopril,1
+Simultaneous administration of potassium and lisinopril,1
+Drug interaction between metformin and amlodipine,0
+Prescribing potassium to a patient already on lisinopril,1
+The patient received sotalol alongside amiodarone,2
+fluoxetine used concomitantly with tramadol,1
+Combined therapy with warfarin and phenytoin,2
+Concurrent use of phenytoin and warfarin in the same patient,2
+Co-administration of metformin with amoxicillin,0
+Simultaneous administration of quinidine and digoxin,2
+Patient is taking cetirizine and paracetamol,0
+Combined therapy with omeprazole and clarithromycin,0
+The patient received NSAIDs alongside lithium,2
+Prescribing glipizide to a patient already on metformin,0
+Combined therapy with trimethoprim and methotrexate,2
+Drug interaction between atorvastatin and metoprolol,0
+The patient received amlodipine alongside omeprazole,0
+Patient is taking clarithromycin and cisapride,2
+Combined therapy with atenolol and omeprazole,0
+The patient received oral contraceptives alongside rifampicin,1
+The patient received lisinopril alongside potassium,1
+Prescribing SSRIs to a patient already on MAOIs,2
+Co-administration of amiodarone with sotalol,2
+Patient is taking warfarin and aspirin,1
+digoxin used concomitantly with verapamil,1
+Patient is taking paracetamol and cetirizine,0
+Drug interaction between omeprazole and clopidogrel,1
+Drug interaction between losartan and ibuprofen,0
+Concurrent use of warfarin and fluconazole in the same patient,1
+The patient received fluoxetine alongside tramadol,1
+Drug interaction between azithromycin and pimozide,2
+atorvastatin used concomitantly with metoprolol,0
+Drug interaction between linezolid and SSRIs,2
+The patient received atorvastatin alongside ezetimibe,0
+Simultaneous administration of warfarin and rifampicin,2
+Prescribing simvastatin to a patient already on erythromycin,1
+Drug interaction between potassium and lisinopril,1
+Simultaneous administration of cetirizine and paracetamol,0
+Concurrent use of omeprazole and clopidogrel in the same patient,1
+cetirizine was added to ongoing paracetamol therapy,0
+The patient received theophylline alongside ciprofloxacin,2
+simvastatin used concomitantly with erythromycin,1
+Patient is taking NSAIDs and lithium,2
+Patient is taking metformin and glipizide,0
+Simultaneous administration of ramipril and simvastatin,0
+quinidine used concomitantly with digoxin,2
+Concurrent use of simvastatin and erythromycin in the same patient,1
+theophylline used concomitantly with ciprofloxacin,2
+itraconazole was added to ongoing simvastatin therapy,2
+Co-administration of amlodipine with metformin,0
+SSRIs used concomitantly with linezolid,2
+Combined therapy with valproate and carbamazepine,2
+Drug interaction between metformin and lisinopril,0
+Concurrent use of linezolid and SSRIs in the same patient,2
+omeprazole used concomitantly with clarithromycin,0
+Co-administration of rifampicin with warfarin,2
+Simultaneous administration of statins and cyclosporine,1
+glipizide used concomitantly with metformin,0
+Concurrent use of NSAIDs and methotrexate in the same patient,1
+Drug interaction between ciprofloxacin and theophylline,2
+Simultaneous administration of simvastatin and itraconazole,2
+trimethoprim used concomitantly with methotrexate,2
+Prescribing clarithromycin to a patient already on cisapride,2
+Co-administration of paracetamol with aspirin,0
+digoxin was added to ongoing verapamil therapy,1
+Drug interaction between vitamin C and aspirin,0
+Combined therapy with warfarin and rifampicin,2
+Combined therapy with oral contraceptives and carbamazepine,1
+Simultaneous administration of metformin and glipizide,0
+Co-administration of glipizide with metformin,0
+paracetamol was added to ongoing cetirizine therapy,0
+The patient received aspirin alongside vitamin C,0
+Prescribing aspirin to a patient already on vitamin C,0
+Prescribing methotrexate to a patient already on NSAIDs,1
+warfarin used concomitantly with rifampicin,2
+Concurrent use of cetirizine and paracetamol in the same patient,0
+Simultaneous administration of fluconazole and warfarin,1
+Simultaneous administration of pimozide and azithromycin,2
+Prescribing terfenadine to a patient already on ketoconazole,2
+amoxicillin used concomitantly with metformin,0
+azithromycin was added to ongoing pimozide therapy,2
+Co-administration of simvastatin with ramipril,0
+Concurrent use of metformin and glipizide in the same patient,0
+The patient received lisinopril alongside amlodipine,0
+Patient is taking clarithromycin and omeprazole,0
+Simultaneous administration of azithromycin and pimozide,2
+vitamin C used concomitantly with aspirin,0
+metformin was added to ongoing amoxicillin therapy,0
+amiodarone was added to ongoing sotalol therapy,2
