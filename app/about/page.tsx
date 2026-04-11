@@ -1,112 +1,97 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import { ShieldCheck, Server, Database, CheckCircle, Verified } from "lucide-react";
 
 export default function AboutPage() {
-  const router = useRouter();
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'DM Sans', 'Helvetica Neue', Arial, sans-serif" }}>
-      {/* Header */}
-      <header style={{ background: "#0F2A3F", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 8, background: "#1D9E75", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: 16 }}>Rx</span>
+    <main className="w-full max-w-4xl mx-auto px-6 py-12">
+      <div className="text-center mb-16 animate-slide-up">
+        <h1 className="text-4xl md:text-5xl font-outfit font-extrabold tracking-tight text-navy-950 dark:text-white mb-6">
+          Architected for <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">Security</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">Scale</span>
+        </h1>
+        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          ClinicalDDI Pro is the industry’s first enterprise-grade drug interaction platform that maintains a Zero Data Transmission policy while offering world-class AI capabilities.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="glass rounded-3xl p-8 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-6">
+            <Server size={24} />
           </div>
+          <h2 className="text-xl font-bold text-navy-950 dark:text-white mb-4">Edge AI Inference</h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+            Unlike legacy clinical decision support systems, all model inference occurs instantaneously on your localized device utilizing WebAssembly and ONNX Runtime. Your patient queries are never sent to external servers.
+          </p>
+          <ul className="space-y-3">
+            {[
+              "INT8 Quantization for maximum performance",
+              "Sub-5ms median inference latency",
+              "Works completely offline in restricted environments"
+            ].map(item => (
+              <li key={item} className="flex gap-3 text-sm font-semibold text-navy-800 dark:text-slate-300">
+                <CheckCircle size={18} className="text-brand-500 shrink-0" /> {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="glass rounded-3xl p-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-6">
+            <Database size={24} />
+          </div>
+          <h2 className="text-xl font-bold text-navy-950 dark:text-white mb-4">Cloud Synchronization</h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+            By migrating to the Enterprise Pro tier, institutions unlock cross-device synchronization and aggregated telemetry via our compliant secure commercial cloud, powered by Prisma and PostgreSQL.
+          </p>
+          <ul className="space-y-3">
+            {[
+              "Enterprise authentication and SSO integrations",
+              "Cross-device localized caching architecture",
+              "Aggregated query volume telemetry"
+            ].map(item => (
+              <li key={item} className="flex gap-3 text-sm font-semibold text-navy-800 dark:text-slate-300">
+                <CheckCircle size={18} className="text-amber-500 shrink-0" /> {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="glass rounded-3xl p-10 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div>
-            <div style={{ color: "#fff", fontWeight: 700, fontSize: 18, letterSpacing: "-0.3px" }}>ClinicalDDI</div>
-            <div style={{ color: "#9FE1CB", fontSize: 11 }}>Drug Interaction Checker</div>
+            <h2 className="text-2xl font-bold text-navy-950 dark:text-white mb-2 flex items-center gap-3">
+              <Verified className="text-brand-500" /> BioBERT Target Roadmap
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400">
+              Continuous validation and deployment pipeline for clinical intelligence capability.
+            </p>
+          </div>
+          <div className="px-4 py-2 bg-slate-100 dark:bg-navy-800 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-sm">
+            Current AUROC: <span className="text-brand-600 dark:text-brand-400">0.96</span>
           </div>
         </div>
-        <div style={{ color: "#9FE1CB", fontSize: 13 }}>Offline · WASM</div>
-      </header>
 
-      {/* Nav Tabs */}
-      <nav style={{ background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "0 32px", display: "flex", gap: 0, position: "relative", zIndex: 50 }}>
-        <button onClick={() => router.push("/", { scroll: false })} style={{ padding: "14px 20px", border: "none", background: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, letterSpacing: "0.2px", color: "#64748B", borderBottom: "2px solid transparent", textTransform: "capitalize", transition: "all 0.15s" }}>
-          Checker
-        </button>
-        <button onClick={() => router.push("/history", { scroll: false })} style={{ padding: "14px 20px", border: "none", background: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, letterSpacing: "0.2px", color: "#64748B", borderBottom: "2px solid transparent", textTransform: "capitalize", transition: "all 0.15s" }}>
-          History
-        </button>
-        <button style={{ padding: "14px 20px", border: "none", background: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, letterSpacing: "0.2px", color: "#0F2A3F", borderBottom: "2px solid #1D9E75", textTransform: "capitalize", transition: "all 0.15s" }}>
-          About
-        </button>
-      </nav>
-
-      <main style={{ maxWidth: 780, margin: "0 auto", padding: "32px 24px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <div style={{ background: "#fff", borderRadius: 16, border: "1px solid #E2E8F0", padding: 32 }}>
-            <h2 style={{ margin: "0 0 12px", fontSize: 20, fontWeight: 700, color: "#0F2A3F" }}>About ClinicalDDI</h2>
-            <p style={{ margin: "0 0 16px", fontSize: 15, color: "#475569", lineHeight: 1.7 }}>
-              ClinicalDDI is a privacy-first drug-drug interaction checker that runs entirely in your browser via WebAssembly. No patient data is ever transmitted — inference happens locally on your device.
-            </p>
-            <p style={{ margin: 0, fontSize: 15, color: "#475569", lineHeight: 1.7 }}>
-              Built for research centers, laboratories, clinics and hospitals that cannot afford to send sensitive patient data to the cloud.
-            </p>
-          </div>
-
+        <div className="space-y-4">
           {[
-            {
-              title: "Model",
-              items: [
-                ["Architecture", "BioBERT-tiny fine-tuned for DDI classification"],
-                ["Classes", "No interaction · Moderate · Severe"],
-                ["AUROC", "0.96 (target was 0.85)"],
-                ["Quantisation", "INT8 dynamic — torch.quantization"],
-                ["Format", "ONNX opset 17 → ONNX Runtime Web (WASM)"],
-                ["Model size", "0.02 MB"],
-                ["Inference", "~3.4ms avg in browser"],
-              ],
-            },
-            {
-              title: "Privacy & architecture",
-              items: [
-                ["Data transmission", "Zero — fully offline"],
-                ["Internet required", "No"],
-                ["Patient data stored", "Never"],
-                ["Deployment", "Static site — Vercel free tier"],
-                ["Runtime", "WebAssembly (WASM) in browser"],
-              ],
-            },
-            {
-              title: "Regulatory context",
-              items: [
-                ["Classification", "Class II SaMD (510k) — clinical decision support"],
-                ["PDPA Malaysia", "Compliant by design — no data leaves device"],
-                ["Use case", "Decision support only — not autonomous prescriber"],
-                ["Audit trail", "AUROC documented · model version tracked"],
-              ],
-            },
-          ].map(({ title, items }) => (
-            <div key={title} style={{ background: "#fff", borderRadius: 16, border: "1px solid #E2E8F0", padding: 28 }}>
-              <h3 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 700, color: "#0F2A3F", textTransform: "capitalize" }}>{title}</h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-                {items.map(([k, v], i) => (
-                  <div
-                    key={k}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "10px 0",
-                      borderBottom: i < items.length - 1 ? "1px solid #F1F5F9" : "none",
-                      gap: 16,
-                    }}
-                  >
-                    <span style={{ fontSize: 14, color: "#64748B", flexShrink: 0 }}>{k}</span>
-                    <span style={{ fontSize: 14, fontWeight: 600, color: "#0F2A3F", textAlign: "right" }}>{v}</span>
-                  </div>
-                ))}
+            { label: "Phase I (Current)", desc: "TWOSIDES 63,000+ pairs & curated clinical baselines", status: "Active" },
+            { label: "Phase II (In Progress)", desc: "DrugBank 300,000+ commercial interaction profiles", status: "Validating" },
+            { label: "Phase III (Target)", desc: "1,000,000+ dynamic pairs utilizing aggregated FAERS data", status: "Upcoming" },
+          ].map((phase, i) => (
+            <div key={phase.label} className="flex flex-col md:flex-row md:items-center gap-4 p-4 rounded-2xl bg-white/60 dark:bg-navy-900 border border-slate-200/50 dark:border-white/5">
+              <div className="flex-1">
+                <h4 className="font-bold text-navy-950 dark:text-white mb-1">{phase.label}</h4>
+                <p className="text-sm text-slate-500 dark:text-slate-400">{phase.desc}</p>
+              </div>
+              <div className={`px-3 py-1 text-xs font-bold rounded-full border ${phase.status === "Active" ? "bg-green-100 border-green-200 text-green-700 dark:bg-green-900/30 dark:border-green-800 dark:text-green-400"
+                  : phase.status === "Validating" ? "bg-amber-100 border-amber-200 text-amber-700 dark:bg-amber-900/30 dark:border-amber-800 dark:text-amber-400"
+                    : "bg-slate-100 border-slate-200 text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400"
+                }`}>
+                {phase.status}
               </div>
             </div>
           ))}
         </div>
-      </main>
-
-      <footer style={{ borderTop: "1px solid #E2E8F0", padding: "16px 32px", textAlign: "center", fontSize: 12, color: "#94A3B8" }}>
-        ClinicalDDI · For clinical decision support only · Always verify with current drug references
-      </footer>
-    </div>
+      </div>
+    </main>
   );
 }
-

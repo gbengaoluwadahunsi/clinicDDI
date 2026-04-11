@@ -1,212 +1,157 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { ClipboardList, ExternalLink, Trash2, FileJson } from "lucide-react";
+import { db } from "@/lib/db";
+import { useLiveQuery } from "dexie-react-hooks";
 
 type Severity = "none" | "moderate" | "severe";
 
-type HistoryItem = {
-  id: string;
-  drug1: string;
-  drug2: string;
-  severity: Severity;
-  confidence: number;
-  classProbs?: [number, number, number];
-  latencyMs: number;
-  timestamp: Date;
-};
-
-const STORAGE_KEY_HISTORY = "clinicalddi_history_v1";
 const STORAGE_KEY_LAST_CHECK = "clinicalddi_last_check_v1";
 
-const SEVERITY_CONFIG: Record<
-  Severity,
-  { label: string; bg: string; border: string; text: string; badge: string; badgeText: string; dot: string }
-> = {
+const SEVERITY_CONFIG: Record<Severity, { label: string; text: string; dot: string; badge: string; badgeText: string }> = {
   none: {
     label: "No interaction detected",
-    bg: "#F0FDF4",
-    border: "#86EFAC",
     text: "#14532D",
-    badge: "#DCFCE7",
-    badgeText: "#166534",
     dot: "#22C55E",
+    badge: "bg-green-100 dark:bg-green-900/40",
+    badgeText: "text-green-800 dark:text-green-300"
   },
   moderate: {
     label: "Moderate interaction",
-    bg: "#FFFBEB",
-    border: "#FCD34D",
     text: "#78350F",
-    badge: "#FEF3C7",
-    badgeText: "#92400E",
     dot: "#F59E0B",
+    badge: "bg-amber-100 dark:bg-amber-900/40",
+    badgeText: "text-amber-800 dark:text-amber-300"
   },
   severe: {
     label: "Severe interaction — review required",
-    bg: "#FFF1F2",
-    border: "#FDA4AF",
     text: "#881337",
-    badge: "#FFE4E6",
-    badgeText: "#9F1239",
     dot: "#F43F5E",
+    badge: "bg-rose-100 dark:bg-rose-900/40",
+    badgeText: "text-rose-800 dark:text-rose-300"
   },
 };
 
 export default function HistoryPage() {
   const router = useRouter();
-  const [history, setHistory] = useState<HistoryItem[]>([]);
 
-  useEffect(() => {
-    try {
-      const rawHistory = window.localStorage.getItem(STORAGE_KEY_HISTORY);
-      if (!rawHistory) return;
-      const parsed = JSON.parse(rawHistory) as Array<
-        Omit<HistoryItem, "timestamp"> & { timestampMs: number }
-      >;
-      setHistory(
-        parsed.map(item => ({
-          ...item,
-          timestamp: new Date(item.timestampMs),
-        }))
-      );
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
+  const history = useLiveQuery(
+    () => db.history.orderBy('timestamp').reverse().toArray()
+  ) || [];
 
-  function clearHistory() {
-    setHistory([]);
-    if (typeof window !== "undefined") {
-      window.localStorage.removeItem(STORAGE_KEY_HISTORY);
+  async function clearHistory() {
+    if (confirm("Permanently delete all clinical history records from this device?")) {
+      await db.history.clear();
     }
   }
 
+  function exportHistory() {
+    const data = JSON.stringify(history, null, 2);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ClinicalDDI_FullHistory_${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+  }
+
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'DM Sans', 'Helvetica Neue', Arial, sans-serif" }}>
-      {/* Header */}
-      <header style={{ background: "#0F2A3F", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 8, background: "#1D9E75", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "#fff", fontWeight: 700, fontSize: 16 }}>Rx</span>
-          </div>
-          <div>
-            <div style={{ color: "#fff", fontWeight: 700, fontSize: 18, letterSpacing: "-0.3px" }}>ClinicalDDI</div>
-            <div style={{ color: "#9FE1CB", fontSize: 11 }}>Drug Interaction Checker</div>
-          </div>
+    <main className="w-full max-w-5xl mx-auto px-6 py-12">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 animate-slide-up">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-outfit font-extrabold tracking-tight text-navy-950 dark:text-white mb-2 flex items-center gap-3">
+            <ClipboardList className="text-brand-500" /> Interaction History
+          </h1>
+          <p className="text-slate-600 dark:text-slate-400">
+            A secure, IndexDB-backed clinical log stored entirely on this workstation.
+          </p>
         </div>
-        <button
-          onClick={() => router.push("/", { scroll: false })}
-          style={{
-            background: "#1D9E75",
-            border: "none",
-            color: "#fff",
-            padding: "8px 14px",
-            borderRadius: 10,
-            fontWeight: 700,
-            cursor: "pointer",
-          }}
-        >
-          New check
-        </button>
-      </header>
 
-      {/* Nav Tabs */}
-      <nav style={{ background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "0 32px", display: "flex", gap: 0, position: "relative", zIndex: 50 }}>
-        <button onClick={() => router.push("/", { scroll: false })} style={{ padding: "14px 20px", border: "none", background: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, letterSpacing: "0.2px", color: "#64748B", borderBottom: "2px solid transparent", textTransform: "capitalize", transition: "all 0.15s" }}>
-          Checker
-        </button>
-        <button style={{ padding: "14px 20px", border: "none", background: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, letterSpacing: "0.2px", color: "#0F2A3F", borderBottom: "2px solid #1D9E75", textTransform: "capitalize", transition: "all 0.15s" }}>
-          History
-        </button>
-        <button onClick={() => router.push("/about", { scroll: false })} style={{ padding: "14px 20px", border: "none", background: "none", cursor: "pointer", fontSize: 14, fontWeight: 600, letterSpacing: "0.2px", color: "#64748B", borderBottom: "2px solid transparent", textTransform: "capitalize", transition: "all 0.15s" }}>
-          About
-        </button>
-      </nav>
-
-      <main style={{ maxWidth: 780, margin: "0 auto", padding: "32px 24px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-          <h2 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: "#0F2A3F" }}>Check history</h2>
-          {history.length > 0 && (
+        {history.length > 0 && (
+          <div className="flex gap-3 mt-4 md:mt-0">
+            <button
+              onClick={exportHistory}
+              className="px-5 py-2.5 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all flex items-center gap-2"
+            >
+              <FileJson size={18} /> Export
+            </button>
             <button
               onClick={clearHistory}
-              style={{
-                padding: "8px 16px",
-                fontSize: 13,
-                fontWeight: 600,
-                background: "#FEF2F2",
-                color: "#991B1B",
-                border: "1px solid #FECACA",
-                borderRadius: 8,
-                cursor: "pointer",
-              }}
+              className="px-5 py-2.5 bg-rose-50 text-rose-600 dark:bg-rose-500/10 dark:text-rose-400 font-bold rounded-xl hover:bg-rose-100 dark:hover:bg-rose-500/20 transition-all"
             >
-              Clear history
+              <Trash2 size={18} />
             </button>
-          )}
-        </div>
-
-        {history.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "60px 0", color: "#94A3B8", fontSize: 15 }}>
-            No checks yet — run your first interaction check
           </div>
-        ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            {history.map(h => {
-              const cfg = SEVERITY_CONFIG[h.severity];
-              return (
-                <div
-                  key={h.id}
-                  style={{
-                    background: "#fff",
-                    borderRadius: 12,
-                    border: `1px solid ${cfg.border}`,
-                    padding: "16px 20px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 16,
-                    cursor: "pointer",
-                  }}
-                  onClick={() => {
-                    if (typeof window !== "undefined") {
-                      window.localStorage.setItem(
-                        STORAGE_KEY_LAST_CHECK,
-                        JSON.stringify({ drug1: h.drug1, drug2: h.drug2 })
-                      );
-                    }
-                    router.push("/", { scroll: false });
-                  }}
-                >
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: cfg.dot, flexShrink: 0 }} />
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 15, fontWeight: 600, color: "#0F2A3F" }}>
-                      {h.drug1} + {h.drug2}
-                    </div>
-                    <div style={{ fontSize: 13, color: "#64748B", marginTop: 2 }}>{cfg.label}</div>
+        )}
+      </div>
+
+      {history.length === 0 ? (
+        <div className="h-[400px] glass rounded-3xl p-8 flex flex-col items-center justify-center text-center border border-dashed border-slate-300 dark:border-slate-700 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <div className="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-navy-800 text-slate-400 flex items-center justify-center mb-6">
+            <ClipboardList size={32} />
+          </div>
+          <h3 className="text-lg font-bold text-navy-950 dark:text-white mb-2">Local Audit Log Empty</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-md">
+            All clinical intelligence sessions are recorded locally using encrypted browser storage.
+          </p>
+          <button onClick={() => router.push("/dashboard")} className="mt-8 px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-2xl transition-all shadow-lg hover:shadow-brand-500/25">
+            Initialize New Session
+          </button>
+        </div>
+      ) : (
+        <div className="grid gap-4">
+          {history.map((h, i) => {
+            const cfg = SEVERITY_CONFIG[h.severity];
+            const date = new Date(h.timestamp);
+            return (
+              <div
+                key={h.id}
+                className="group p-6 glass rounded-2xl hover:shadow-lg transition-all cursor-pointer animate-slide-up flex flex-col md:flex-row md:items-center gap-6"
+                style={{ animationDelay: `${Math.min(0.5, 0.05 * i)}s` }}
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.localStorage.setItem(STORAGE_KEY_LAST_CHECK, JSON.stringify({ drug1: h.drug1, drug2: h.drug2 }));
+                  }
+                  router.push("/dashboard");
+                }}
+              >
+                <div className="flex-1 flex items-start gap-4">
+                  <div className="mt-1 w-4 h-4 rounded-full flex-shrink-0" style={{ backgroundColor: cfg.dot, boxShadow: `0 0 12px ${cfg.dot}80` }} />
+                  <div>
+                    <h3 className="text-xl font-bold text-navy-950 dark:text-white mb-1">
+                      {h.drug1} <span className="text-slate-400 font-normal mx-1">+</span> {h.drug2}
+                    </h3>
+                    <p className="text-sm font-medium mb-3" style={{ color: cfg.text }}>
+                      {cfg.label}
+                    </p>
+
                     {h.classProbs && (
-                      <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 4 }}>
-                        No {(h.classProbs[0] * 100).toFixed(0)}% · Mod {(h.classProbs[1] * 100).toFixed(0)}% · Sev {(h.classProbs[2] * 100).toFixed(0)}%
+                      <div className="flex gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                        <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-green-500" /> Saf {(h.classProbs[0] * 100).toFixed(0)}%</span>
+                        <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-amber-500" /> Mod {(h.classProbs[1] * 100).toFixed(0)}%</span>
+                        <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-rose-500" /> Sev {(h.classProbs[2] * 100).toFixed(0)}%</span>
                       </div>
                     )}
                   </div>
-                  <div style={{ textAlign: "right" }}>
-                    <div style={{ background: cfg.badge, color: cfg.badgeText, fontSize: 12, fontWeight: 700, padding: "3px 10px", borderRadius: 12, marginBottom: 4 }}>
-                      {(h.confidence * 100).toFixed(1)}%
-                    </div>
-                    <div style={{ fontSize: 11, color: "#94A3B8" }}>
-                      {h.latencyMs}ms · {h.timestamp.toLocaleTimeString()}
-                    </div>
+                </div>
+
+                <div className="flex md:flex-col items-center md:items-end justify-between md:justify-center gap-2 border-t md:border-t-0 md:border-l border-slate-200 dark:border-white/10 pt-4 md:pt-0 md:pl-6">
+                  <div className={`px-3 py-1 rounded-full text-xs font-bold ${cfg.badge} ${cfg.badgeText}`}>
+                    Top Class {(h.confidence * 100).toFixed(1)}%
+                  </div>
+                  <div className="text-xs font-medium text-slate-400 whitespace-nowrap">
+                    {date.toLocaleDateString()} · {date.toLocaleTimeString()}
+                  </div>
+                  <div className="hidden md:flex text-brand-500 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 mt-2">
+                    <ExternalLink size={20} />
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        )}
-      </main>
-
-      <footer style={{ borderTop: "1px solid #E2E8F0", padding: "16px 32px", textAlign: "center", fontSize: 12, color: "#94A3B8" }}>
-        ClinicalDDI · For clinical decision support only · Always verify with current drug references
-      </footer>
-    </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </main>
   );
 }
-
