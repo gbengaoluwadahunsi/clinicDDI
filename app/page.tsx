@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ShieldCheck, Zap, Lock, Brain, Activity, ArrowRight, Sparkles, Globe, Server, ChevronRight, CheckCircle2, ShieldAlert, Cpu } from "lucide-react";
+import { ShieldCheck, Lock, Brain, Activity, ArrowRight, Globe, ChevronRight, CheckCircle2, ShieldAlert, Cpu } from "lucide-react";
 
 export default function LandingPage() {
     return (
@@ -37,10 +37,10 @@ export default function LandingPage() {
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <Link
-                            href="/pricing"
+                            href="/about"
                             className="px-10 py-5 bg-navy-900/50 backdrop-blur-xl border border-white/10 text-white rounded-full font-bold hover:bg-white/5 transition-all active:scale-[0.98] flex items-center gap-2 text-lg"
                         >
-                            Explore Plans
+                            How it works
                         </Link>
                     </div>
 
@@ -139,43 +139,31 @@ export default function LandingPage() {
                 </div>
             </section>
 
-            {/* ─── PRICING PREVIEW ─── */}
+            {/* ─── FREE PRODUCT ─── */}
             <section className="py-32 bg-white text-navy-950">
                 <div className="max-w-7xl mx-auto px-6 text-center">
-                    <h2 className="text-4xl md:text-6xl font-extrabold mb-20 tracking-tight">Simple, transparent pricing.</h2>
-                    <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        {/* Free */}
-                        <div className="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 text-left transition-all hover:scale-[1.02]">
-                            <div className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6">Standard</div>
-                            <div className="text-6xl font-extrabold mb-4">$0</div>
-                            <p className="text-slate-500 mb-10 font-medium">Perfect for researchers and individual clinicians.</p>
-                            <ul className="space-y-4 mb-10">
-                                {["Unlimited Local Checks", "BioBERT 3.0 Model", "Offline Mode"].map(f => (
-                                    <li key={f} className="flex items-center gap-3 font-bold text-slate-700">
-                                        <ChevronRight size={18} className="text-brand-500" /> {f}
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link href="/dashboard" className="block w-full py-4 bg-navy-950 text-white text-center rounded-2xl font-bold hover:bg-brand-600 transition-all">
-                                Start Free
-                            </Link>
-                        </div>
-                        {/* Pro */}
-                        <div className="p-12 rounded-[2.5rem] bg-navy-900 text-white text-left transition-all hover:scale-[1.02] shadow-2xl shadow-brand-500/20">
-                            <div className="text-sm font-bold uppercase tracking-widest text-brand-400 mb-6 font-mono">Professional</div>
-                            <div className="text-6xl font-extrabold mb-4">$12</div>
-                            <p className="text-slate-400 mb-10 font-medium">For clinical teams requiring audit-ready reporting.</p>
-                            <ul className="space-y-4 mb-10">
-                                {["Cloud-Synced History", "PDF Clinical Export", "Extended Audit Logs"].map(f => (
-                                    <li key={f} className="flex items-center gap-3 font-bold text-white">
-                                        <Sparkles size={18} className="text-accent-400" /> {f}
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link href="/dashboard" className="block w-full py-4 bg-gradient-to-r from-brand-600 to-brand-500 text-white text-center rounded-2xl font-bold hover:opacity-90 transition-all">
-                                Upgrade to Pro
-                            </Link>
-                        </div>
+                    <h2 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight">Free for everyone.</h2>
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-16 font-medium leading-relaxed">
+                        No accounts or payments required to run checks. Inference stays in your browser—always.
+                    </p>
+                    <div className="max-w-xl mx-auto p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 text-left">
+                        <div className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6">Included</div>
+                        <ul className="space-y-4 mb-10">
+                            {[
+                                "Unlimited local drug-pair checks",
+                                "BioBERT-style model via ONNX + WebAssembly",
+                                "History & JSON export in the app",
+                                "Clinical PDF reports from your history",
+                                "Runs offline after the first load",
+                            ].map((f) => (
+                                <li key={f} className="flex items-center gap-3 font-bold text-slate-700">
+                                    <ChevronRight size={18} className="text-brand-500 shrink-0" /> {f}
+                                </li>
+                            ))}
+                        </ul>
+                        <Link href="/dashboard" className="block w-full py-4 bg-navy-950 text-white text-center rounded-2xl font-bold hover:bg-brand-600 transition-all">
+                            Open the checker
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -215,7 +203,7 @@ export default function LandingPage() {
                             <div className="space-y-4">
                                 <Link href="#" className="block hover:text-brand-600">Product</Link>
                                 <Link href="#" className="block hover:text-brand-600">Features</Link>
-                                <Link href="/pricing" className="block hover:text-brand-600">Pricing</Link>
+                                <Link href="/about" className="block hover:text-brand-600">About</Link>
                             </div>
                             <div className="space-y-4">
                                 <Link href="#" className="block hover:text-brand-600">Security</Link>

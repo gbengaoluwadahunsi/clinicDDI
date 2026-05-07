@@ -16,8 +16,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
-        // @ts-ignore
-        session.user.plan = user.plan;
       }
       return session;
     },

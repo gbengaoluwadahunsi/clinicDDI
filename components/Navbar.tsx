@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Activity, ClipboardList, Info, ShieldCheck, UserCircle, Sparkles } from "lucide-react";
+import { Activity, ClipboardList, Info, ShieldCheck } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const NAV_ITEMS = [
@@ -15,7 +15,6 @@ const NAV_ITEMS = [
 export function Navbar() {
     const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
-    const isLanding = pathname === "/";
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -39,7 +38,7 @@ export function Navbar() {
                     <div>
                         <div className="font-outfit font-bold text-xl tracking-tight text-navy-950 dark:text-white flex items-center gap-2">
                             ClinicalDDI
-                            <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 text-white text-[10px] uppercase tracking-wider font-bold shadow-sm">Pro</span>
+                            <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 text-white text-[10px] uppercase tracking-wider font-bold shadow-sm">Free</span>
                         </div>
                         <div className="text-xs text-slate-500 font-medium tracking-wide">Edge AI Drug Intelligence</div>
                     </div>
@@ -76,12 +75,6 @@ export function Navbar() {
 
                 {/* Actions */}
                 <div className="flex items-center gap-3">
-                    <Link
-                        href="/pricing"
-                        className="hidden md:flex items-center gap-1.5 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                    >
-                        <Sparkles size={16} /> Pricing
-                    </Link>
                     <Link
                         href="/dashboard"
                         className="bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-accent-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all active:scale-95"

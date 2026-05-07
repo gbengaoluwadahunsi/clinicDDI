@@ -7,7 +7,6 @@ import { Tokenizer } from "@huggingface/tokenizers";
 import { Activity, ShieldCheck, Download, Trash2, FileJson, Lock, FileText, Globe } from "lucide-react";
 import { db } from "@/lib/db";
 import { useLiveQuery } from "dexie-react-hooks";
-import { useSession } from "next-auth/react";
 import { generateClinicalReport } from "@/lib/pdf-generator";
 import tokenizerJson from "@/lib/ddi/tokenizer.json";
 import tokenizerConfig from "@/lib/ddi/tokenizer_config.json";
@@ -114,11 +113,7 @@ export default function ClinicalDDI() {
   const [drug1, setDrug1] = useState("");
   const [drug2, setDrug2] = useState("");
   const [checking, setChecking] = useState(false);
-  const [guestCount, setGuestCount] = useState(0);
   const [result, setResult] = useState<CheckResult | null>(null);
-
-  const { data: authSession } = useSession();
-  const isPro = authSession?.user?.plan === "PRO";
 
   const localHistory = useLiveQuery(() => db.history.orderBy('timestamp').reverse().limit(50).toArray()) || [];
 
@@ -161,8 +156,6 @@ export default function ClinicalDDI() {
 
   useEffect(() => {
     setHistoryHydrated(true);
-    const storedCount = localStorage.getItem("ddi_guest_count");
-    setGuestCount(parseInt(storedCount || "0"));
   }, []);
 
   async function runCheck(forDrug1?: string, forDrug2?: string) {
@@ -234,12 +227,6 @@ export default function ClinicalDDI() {
         latencyMs: r.latencyMs,
         timestamp: Date.now(),
       });
-
-      if (!isPro) {
-        const newCount = guestCount + 1;
-        setGuestCount(newCount);
-        localStorage.setItem("ddi_guest_count", newCount.toString());
-      }
     } catch (e) { console.error(e); }
     setChecking(false);
   }
@@ -331,14 +318,12 @@ export default function ClinicalDDI() {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  {isPro && (
-                    <button
-                      onClick={() => generateClinicalReport(localHistory)}
-                      className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-brand-600 to-brand-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-brand-500/25 transition-all"
-                    >
-                      <FileText size={16} /> Generate Clinical PDF
-                    </button>
-                  )}
+                  <button
+                    onClick={() => generateClinicalReport(localHistory)}
+                    className="w-full flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-brand-600 to-brand-500 text-white rounded-xl text-sm font-bold shadow-lg shadow-brand-500/25 transition-all"
+                  >
+                    <FileText size={16} /> Generate Clinical PDF
+                  </button>
                   <div className="flex gap-3">
                     <button
                       onClick={() => {

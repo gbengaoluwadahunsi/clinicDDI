@@ -8,7 +8,7 @@ export default function AboutPage() {
           Architected for <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">Security</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">Scale</span>
         </h1>
         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          ClinicalDDI Pro is the industry’s first enterprise-grade drug interaction platform that maintains a Zero Data Transmission policy while offering world-class AI capabilities.
+          ClinicalDDI is a privacy-first drug interaction assistant: inference runs in your browser, with optional sign-in only for convenience—not for paywalls.
         </p>
       </div>
 
@@ -38,15 +38,15 @@ export default function AboutPage() {
           <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-6">
             <Database size={24} />
           </div>
-          <h2 className="text-xl font-bold text-navy-950 dark:text-white mb-4">Cloud Synchronization</h2>
+          <h2 className="text-xl font-bold text-navy-950 dark:text-white mb-4">Local history</h2>
           <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-            By migrating to the Enterprise Pro tier, institutions unlock cross-device synchronization and aggregated telemetry via our compliant secure commercial cloud, powered by Prisma and PostgreSQL.
+            Checks and reports are stored on your device (IndexedDB) by default. Nothing is uploaded for model inference; optional Google sign-in can be enabled later for account features without changing the on-device engine.
           </p>
           <ul className="space-y-3">
             {[
-              "Enterprise authentication and SSO integrations",
-              "Cross-device localized caching architecture",
-              "Aggregated query volume telemetry"
+              "History, JSON export, and PDF reports in the app",
+              "No subscription or payment flows",
+              "Same WASM model for every visitor"
             ].map(item => (
               <li key={item} className="flex gap-3 text-sm font-semibold text-navy-800 dark:text-slate-300">
                 <CheckCircle size={18} className="text-amber-500 shrink-0" /> {item}
