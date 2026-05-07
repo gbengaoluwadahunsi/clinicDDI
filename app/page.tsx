@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ShieldCheck, Zap, Lock, Brain, Activity, ArrowRight, Sparkles, Globe, Server, ChevronRight, CheckCircle2, ShieldAlert, Cpu } from "lucide-react";
 
 export default function LandingPage() {
@@ -7,15 +6,9 @@ export default function LandingPage() {
         <div className="flex flex-col min-h-screen bg-navy-950 text-white selection:bg-brand-500/30">
             {/* ─── HERO ─── */}
             <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-                {/* Background Image with Mask */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/clinical_ai_hero_1775894702285.png"
-                        alt="Clinical AI Hero"
-                        fill
-                        className="object-cover hero-mask opacity-60 scale-105 animate-float"
-                        priority
-                    />
+                {/* Hero backdrop (add /public/clinical_ai_hero_*.png and next/image if you want a photo) */}
+                <div className="absolute inset-0 z-0" aria-hidden>
+                    <div className="absolute inset-0 hero-mask opacity-70 scale-105 animate-float bg-gradient-to-br from-brand-900/90 via-emerald-950/40 to-navy-950 bg-[length:200%_200%]" />
                     <div className="absolute inset-0 bg-gradient-to-b from-navy-950/20 via-navy-950/40 to-navy-950" />
                 </div>
 

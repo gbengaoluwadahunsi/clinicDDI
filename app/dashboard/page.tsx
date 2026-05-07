@@ -9,6 +9,8 @@ import { db } from "@/lib/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { useSession } from "next-auth/react";
 import { generateClinicalReport } from "@/lib/pdf-generator";
+import tokenizerJson from "@/lib/ddi/tokenizer.json";
+import tokenizerConfig from "@/lib/ddi/tokenizer_config.json";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 type Severity = "none" | "moderate" | "severe";
@@ -133,7 +135,7 @@ export default function ClinicalDDI() {
     let cancelled = false;
     (async () => {
       try {
-        const modelUrl = "/ddi_model_single.onnx";
+        const modelUrl = "/ddi_v2_single.onnx";
         const s = await ort.InferenceSession.create(modelUrl, {
           executionProviders: ["wasm"],
         });
@@ -150,18 +152,11 @@ export default function ClinicalDDI() {
   }, []);
 
   useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const [tokJson, tokCfg] = await Promise.all([
-          fetch("/tokenizer.json").then(r => r.json()),
-          fetch("/tokenizer_config.json").then(r => r.json()),
-        ]);
-        if (cancelled) return;
-        setTokenizer(new Tokenizer(tokJson, tokCfg));
-      } catch (e) { console.error(e); }
-    })();
-    return () => { cancelled = true; };
+    try {
+      setTokenizer(new Tokenizer(tokenizerJson as object, tokenizerConfig as object));
+    } catch (e) {
+      console.error(e);
+    }
   }, []);
 
   useEffect(() => {
