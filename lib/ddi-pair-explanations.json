@@ -1,0 +1,62 @@
+{
+  "acetaminophen|||warfarin": {
+    "title": "Metabolic & bleeding risk",
+    "text": "Acetaminophen at higher or chronic doses may affect warfarin metabolism and INR in some patients, increasing bleed risk. Monitor INR if both are used; avoid exceeding acetaminophen limits."
+  },
+  "aspirin|||warfarin": {
+    "title": "Additive anticoagulation / GI bleed",
+    "text": "Aspirin inhibits platelets; warfarin impairs clotting factors—together they markedly raise bleeding and ulcer risk. Combination is sometimes intentional under specialist care with tight monitoring."
+  },
+  "aspirin|||ibuprofen": {
+    "title": "Platelet & GI effects",
+    "text": "Ibuprofen can antagonize low-dose aspirin’s antiplatelet effect when dosed together, and both increase GI toxicity. Separate dosing strategies may be used if both are required."
+  },
+  "clarithromycin|||atorvastatin": {
+    "title": "CYP3A4 inhibition → statin levels",
+    "text": "Clarithromycin strongly inhibits CYP3A4, raising exposure to atorvastatin and increasing myopathy/rhabdomyolysis risk. Prefer a non-interacting antibiotic or suspend/high-dose-reduce statin per guidelines."
+  },
+  "clarithromycin|||simvastatin": {
+    "title": "Major statin interaction",
+    "text": "Simvastatin is highly CYP3A4-dependent; clarithromycin co-use is contraindicated or requires stopping simvastatin due to muscle toxicity risk."
+  },
+  "ketoconazole|||simvastatin": {
+    "title": "Potent CYP3A4 / transporter interaction",
+    "text": "Systemic ketoconazole dramatically increases statin levels. Avoid combination or hold statin while antifungal therapy continues."
+  },
+  "methotrexate|||ibuprofen": {
+    "title": "Renal clearance & toxicity",
+    "text": "NSAIDs may reduce renal clearance of methotrexate, raising toxicity (bone marrow, mucositis, hepatitis). Low-dose weekly MTX still needs caution; avoid NSAIDs without oversight."
+  },
+  "lithium|||ibuprofen": {
+    "title": "Reduced lithium excretion",
+    "text": "NSAIDs can increase lithium levels via prostaglandin-mediated renal effects—risk of tremor, toxicity, arrhythmia. Monitor levels and renal function."
+  },
+  "lithium|||furosemide": {
+    "title": "Electrolyte & volume shifts",
+    "text": "Diuretics alter sodium and volume and can destabilize lithium clearance—levels may rise or fluctuate. Requires lab monitoring."
+  },
+  "tramadol|||fluoxetine": {
+    "title": "Serotonin effects",
+    "text": "Tramadol has serotonergic activity; SSRIs increase serotonin syndrome risk (agitation, clonus, fever). Use lowest doses and watch for symptoms."
+  },
+  "ciprofloxacin|||warfarin": {
+    "title": "INR instability",
+    "text": "Fluoroquinolones occasionally perturb warfarin metabolism or gut flora—INR may rise. Extra INR checks when starting or stopping ciprofloxacin."
+  },
+  "celecoxib|||ciprofloxacin": {
+    "title": "NSAID + fluoroquinolone",
+    "text": "Celecoxib (a COX-2–preferring NSAID) with ciprofloxacin can add central nervous system stimulation or seizure risk in susceptible people, and both may stress kidneys or the gut in some patients. Watch for tremor, confusion, severe headache, tendon pain, black stools, or vomiting blood—seek urgent care for those. Dosing, hydration, age, and other medicines change the picture; a clinician or pharmacist can judge whether this combination is appropriate for you."
+  },
+  "aspirin|||clopidogrel": {
+    "title": "Dual antiplatelet",
+    "text": "Dual pathway platelet inhibition increases bleeding (procedures, GI). Often used post-ACS/stent for defined periods under cardiology protocols."
+  },
+  "rifampin|||warfarin": {
+    "title": "Enzyme induction",
+    "text": "Rifampin induces CYP enzymes, lowers warfarin effect—often requires large warfarin dose increases and frequent INR monitoring while on therapy and after stop."
+  },
+  "sertraline|||tramadol": {
+    "title": "Serotonin syndrome",
+    "text": "SSRI + tramadol elevates serotonin syndrome risk; consider alternative analgesics or careful monitoring."
+  }
+}

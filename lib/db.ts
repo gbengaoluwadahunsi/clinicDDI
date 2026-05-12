@@ -10,6 +10,9 @@ export interface CheckHistory {
   latencyMs: number;
   timestamp: number;
   notes?: string;
+  /** How this row was produced */
+  source?: "bert_names" | "structure_fp" | "structure_similarity";
+  tanimoto?: number;
 }
 
 export class ClinicalDDIDatabase extends Dexie {

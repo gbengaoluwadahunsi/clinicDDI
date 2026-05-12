@@ -40,7 +40,7 @@ export function Navbar() {
                             ClinicalDDI
                             <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 text-white text-[10px] uppercase tracking-wider font-bold shadow-sm">Free</span>
                         </div>
-                        <div className="text-xs text-slate-500 font-medium tracking-wide">Edge AI Drug Intelligence</div>
+                        <div className="text-xs text-slate-500 font-medium tracking-wide">Local fingerprint inference</div>
                     </div>
                 </Link>
 
@@ -73,14 +73,15 @@ export function Navbar() {
                     })}
                 </nav>
 
-                {/* Actions */}
                 <div className="flex items-center gap-3">
-                    <Link
-                        href="/dashboard"
-                        className="bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-accent-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all active:scale-95"
-                    >
-                        Open App
-                    </Link>
+                    {pathname === "/" ? (
+                        <Link
+                            href="/dashboard"
+                            className="bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-accent-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all active:scale-95"
+                        >
+                            Open App
+                        </Link>
+                    ) : null}
                 </div>
             </div>
         </header>

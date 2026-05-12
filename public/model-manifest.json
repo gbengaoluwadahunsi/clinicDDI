@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "appVersion": "0.3.0",
+  "models": {
+    "structureFingerprintOnnx": "fingerprint_model.onnx"
+  },
+  "fingerprintOnnx": {
+    "morganRadius": 2,
+    "morganBitsPerMolecule": 1024,
+    "inputDim": 2048,
+    "singleOutput": "logit"
+  },
+  "notes": "structureFingerprintOnnx: try fingerprint_model.onnx then ddi_fingerprint.onnx. Set fingerprintOnnx.singleOutput to \"probability\" if your ONNX graph ends with Sigmoid (skip extra sigmoid in the app)."
+}

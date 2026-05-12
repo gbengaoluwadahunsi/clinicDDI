@@ -24,8 +24,9 @@ export default function LandingPage() {
                     </h1>
 
                     <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto mb-12 animate-slide-up leading-relaxed font-medium" style={{ animationDelay: '0.2s' }}>
-                        The world's first <span className="text-white border-b border-brand-500/50">zero-server</span> clinical intelligence engine.
-                        Enterprise-grade BioBERT inference, locally in your browser.
+                        A <span className="text-white border-b border-brand-500/50">zero-upload</span> clinical intelligence experience: early work leaned on BioBERT-style name inference;
+                        ClinicalDDI Free now scores pairs with an on-device{" "}
+                        <span className="text-white">structure + fingerprint</span> pipeline—still entirely in your browser.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
@@ -46,9 +47,9 @@ export default function LandingPage() {
 
                     {/* Trust indicators */}
                     <div className="mt-20 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-40 grayscale transition-all hover:opacity-80 hover:grayscale-0 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-                        <div className="flex items-center gap-2 font-bold text-xl tracking-tighter"><ShieldCheck size={24} /> HIPAA COMPLIANT</div>
-                        <div className="flex items-center gap-2 font-bold text-xl tracking-tighter"><Lock size={24} /> ZERO DATA STORAGE</div>
-                        <div className="flex items-center gap-2 font-bold text-xl tracking-tighter"><Activity size={24} /> 96% AUROC</div>
+                        <div className="flex items-center gap-2 font-bold text-xl tracking-tighter"><ShieldCheck size={24} /> LOCAL SCORING</div>
+                        <div className="flex items-center gap-2 font-bold text-xl tracking-tighter"><Lock size={24} /> NO SERVER INFERENCE</div>
+                        <div className="flex items-center gap-2 font-bold text-xl tracking-tighter"><Activity size={24} /> STRUCTURE PATH (SHIPPED)</div>
                     </div>
                 </div>
             </section>
@@ -76,20 +77,20 @@ export default function LandingPage() {
                         {[
                             {
                                 icon: ShieldAlert,
-                                title: "Risk Mitigation",
-                                desc: "Identify high-risk drug-drug interactions with clinically validated severity scoring and evidence-based reporting.",
+                                title: "Risk mitigation",
+                                desc: "Surface potential drug pair concerns with informational Safe / Moderate / Severe readouts paired with clinician-friendly PDFs—not a regulator-cleared CDS substitute.",
                                 accent: "bg-red-500/10 text-red-600"
                             },
                             {
                                 icon: Cpu,
-                                title: "Edge Architecture",
-                                desc: "No API calls. The BioBERT model runs via Onyx/WebAssembly directly in the client's V8 engine for sub-5ms performance.",
+                                title: "Edge architecture",
+                                desc: "The shipped checker bundles RDKit in WebAssembly plus an ONNX fingerprint classifier—no reliance on BioBERT runtime for new runs. Inference stays inside your tab, without shipping drug pairs to ClinicalDDI backends.",
                                 accent: "bg-brand-500/10 text-brand-600"
                             },
                             {
                                 icon: Globe,
-                                title: "Offline Readiness",
-                                desc: "Designed for resilient medical environments. Load once, run anywhere—even in remote areas with zero connectivity.",
+                                title: "Offline readiness",
+                                desc: "Load once after the initial assets hydrate, run anywhere—even when ward Wi-Fi flakes out—because your browser already holds the ONNX graph and fingerprints.",
                                 accent: "bg-accent-500/10 text-accent-600"
                             }
                         ].map((item) => (
@@ -115,21 +116,27 @@ export default function LandingPage() {
                             <Brain size={200} className="text-brand-400 opacity-20 animate-pulse" />
                         </div>
                         <div className="absolute bottom-10 left-10 p-8 glass rounded-3xl border-white/10 max-w-xs">
-                            <div className="text-xs font-bold uppercase tracking-widest text-brand-400 mb-2">Real-time Inference</div>
-                            <div className="text-3xl font-extrabold mb-1 tracking-tight">4.8ms</div>
-                            <div className="text-sm text-slate-400">Average pair validation latency</div>
+                            <div className="text-xs font-bold uppercase tracking-widest text-brand-400 mb-2">Local inference cadence</div>
+                            <div className="text-3xl font-extrabold mb-1 tracking-tight">Typ. &lt;10ms*</div>
+                            <div className="text-sm text-slate-400">*Fingerprint pathway on modern laptops; excludes first-time asset download.</div>
                         </div>
                     </div>
                     <div>
+                        <p className="text-sm uppercase tracking-[0.3em] text-brand-400 font-bold mb-4">BioBERT sparked it · Fingerprints shipped it</p>
                         <h2 className="text-4xl md:text-7xl font-extrabold mb-8 tracking-tighter leading-tight">
-                            Powered by <br />
-                            <span className="gradient-text">BioBERT 3.0</span>
+                            Now running <br />
+                            <span className="gradient-text">edge fingerprints.</span>
                         </h2>
                         <p className="text-xl text-slate-400 mb-10 leading-relaxed font-medium">
-                            Our proprietary optimization of the BERT architecture is specifically fine-tuned on the TWOSIDES dataset, achieving 0.96 AUROC. It delivers professional-grade accuracy without the overhead of cloud computing.
+                            Our research lineage started with BioBERT-style ONNX models on drug names—they helped prove sub-cloud latency and respectable AUROC on historical benchmarks—but that path is intentionally retired inside the checker you use today.
+                            The live experience resolves structures locally, fingerprints each compound, routes through TWOSIDES-informed supervision, and never streams your pair upstream.
                         </p>
                         <div className="space-y-4">
-                            {["Integrated severity classification", "Multi-drug pathway analysis", "Standardized MedDRA output"].map(f => (
+                            {[
+                                "Structure-first scoring with bundled SMILES lookups",
+                                "Three-way informational severity readouts + PDF-ready exports",
+                                "History flags older name-model saves when we can detect them",
+                            ].map(f => (
                                 <div key={f} className="flex items-center gap-3 text-lg font-bold">
                                     <CheckCircle2 size={24} className="text-brand-500" /> {f}
                                 </div>
@@ -151,9 +158,8 @@ export default function LandingPage() {
                         <ul className="space-y-4 mb-10">
                             {[
                                 "Unlimited local drug-pair checks",
-                                "BioBERT-style model via ONNX + WebAssembly",
-                                "History & JSON export in the app",
-                                "Clinical PDF reports from your history",
+                                "Fingerprints + ONNX classifier in WASM—research kicked off with BioBERT-style names",
+                                "History PDF export plus per-check clinical PDF",
                                 "Runs offline after the first load",
                             ].map((f) => (
                                 <li key={f} className="flex items-center gap-3 font-bold text-slate-700">
@@ -196,25 +202,28 @@ export default function LandingPage() {
                                 <span className="font-extrabold text-2xl tracking-tighter">ClinicalDDI</span>
                             </div>
                             <p className="text-slate-500 max-w-xs font-medium">
-                                Redefining clinical intelligence with privacy-first edge AI.
+                                Early BioBERT-era builds proved we could score locally; fingerprints now run the checker you open today—pairs stay inside the browser unless you deliberately use an external lookup tool.
                             </p>
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 text-sm font-bold">
                             <div className="space-y-4">
-                                <Link href="#" className="block hover:text-brand-600">Product</Link>
-                                <Link href="#" className="block hover:text-brand-600">Features</Link>
+                                <Link href="/dashboard" className="block hover:text-brand-600">Checker</Link>
+                                <Link href="/history" className="block hover:text-brand-600">History</Link>
                                 <Link href="/about" className="block hover:text-brand-600">About</Link>
                             </div>
                             <div className="space-y-4">
-                                <Link href="#" className="block hover:text-brand-600">Security</Link>
-                                <Link href="#" className="block hover:text-brand-600">Compliance</Link>
-                                <Link href="#" className="block hover:text-brand-600">Privacy</Link>
+                                <Link href="/about" className="block hover:text-brand-600">How it works</Link>
+                                <Link href="/about" className="block hover:text-brand-600">Privacy & local data</Link>
+                                <span className="block text-slate-400 cursor-default">Clinical decision support disclaimers inside app</span>
                             </div>
                             <div className="space-y-4">
-                                <Link href="#" className="block hover:text-brand-600">GitHub</Link>
-                                <Link href="#" className="block hover:text-brand-600">Docs</Link>
-                                <Link href="#" className="block hover:text-brand-600">Status</Link>
-                            </div>
+                                <Link
+                                  href="https://github.com/gbengaoluwadahunsi/clinicDDI"
+                                  className="block hover:text-brand-600"
+                                >
+                                  Source & issues
+                                </Link>
+                              </div>
                         </div>
                     </div>
                     <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest">

@@ -1,0 +1,10 @@
+{
+  "aspirin|||paracetamol": {
+    "title": "Often used together (typical pain relief)",
+    "text": "Public guidance such as the NHS states aspirin is commonly used with paracetamol for pain when appropriate—not the same cautions as combining aspirin with ibuprofen or naproxen. This app’s automatic scorer can be wrong for pairs like this; the note here reflects usual prescribing advice, not a guarantee for your situation. Always follow your clinician or pharmacist."
+  },
+  "acetaminophen|||aspirin": {
+    "title": "Often used together (typical pain relief)",
+    "text": "Acetaminophen (paracetamol) is often combined with aspirin for pain in adults when appropriate; major references distinguish this from combinations like ibuprofen + aspirin, which need more caution. The app’s fingerprint model may still suggest high risk—this offline note overrides that score for this pair. Follow your prescriber’s advice."
+  }
+}

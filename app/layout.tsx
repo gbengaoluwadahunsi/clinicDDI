@@ -8,14 +8,18 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-  title: "ClinicalDDI | Enterprise Drug Interaction Intelligence",
-  description: "Advanced, privacy-compliant drug-drug interaction validation for healthcare professionals.",
+  title: "ClinicalDDI · Edge drug interaction checker",
+  description:
+    "Free, privacy-forward drug pair checker: molecule fingerprints and an ONNX scorer run locally in your browser—not on our servers.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={`${inter.variable} ${outfit.variable} antialiased min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-20`}>
+      <body
+        className={`${inter.variable} ${outfit.variable} antialiased min-h-screen bg-[var(--background)] text-[var(--foreground)] pt-20`}
+        suppressHydrationWarning
+      >
         <Providers>
           <Navbar />
           {children}

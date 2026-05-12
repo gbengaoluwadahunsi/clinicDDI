@@ -1,0 +1,227 @@
+{
+  "aspirin": {
+    "displayName": "Aspirin (acetylsalicylic acid)",
+    "drugClass": "NSAID; antiplatelet (low doses)",
+    "description": "Used for pain, fever, and inflammation; low doses reduce platelet stickiness. Can irritate the stomach and increase bleeding risk, especially with other blood thinners or NSAIDs."
+  },
+  "warfarin": {
+    "displayName": "Warfarin",
+    "drugClass": "Vitamin K antagonist anticoagulant",
+    "description": "Reduces blood clotting by blocking vitamin K–dependent clotting factors. Narrow therapeutic window; many drugs and foods change its effect. Bleeding is the main risk."
+  },
+  "metformin": {
+    "displayName": "Metformin",
+    "drugClass": "Biguanide antidiabetic",
+    "description": "First-line treatment for type 2 diabetes: lowers liver glucose production and improves insulin sensitivity. Can rarely cause lactic acidosis; may need dose caution with kidney problems."
+  },
+  "lisinopril": {
+    "displayName": "Lisinopril",
+    "drugClass": "ACE inhibitor",
+    "description": "Lowers blood pressure and reduces strain on the heart; used for hypertension and heart failure. Watch for cough, high potassium, and kidney function changes."
+  },
+  "atorvastatin": {
+    "displayName": "Atorvastatin",
+    "drugClass": "Statin (HMG-CoA reductase inhibitor)",
+    "description": "Lowers LDL cholesterol and cardiovascular risk. Liver enzymes and muscle symptoms are monitored; several drugs affect its blood levels via CYP enzymes."
+  },
+  "omeprazole": {
+    "displayName": "Omeprazole",
+    "drugClass": "Proton pump inhibitor (PPI)",
+    "description": "Strongly reduces stomach acid for reflux and ulcers. Long-term use affects absorption of some nutrients and may interact with drugs needing acid for absorption."
+  },
+  "amlodipine": {
+    "displayName": "Amlodipine",
+    "drugClass": "Dihydropyridine calcium channel blocker",
+    "description": "Relaxes blood vessels for hypertension and angina. Common effects include ankle swelling and flushing. Grapefruit can raise levels modestly."
+  },
+  "metoprolol": {
+    "displayName": "Metoprolol",
+    "drugClass": "Beta-1–selective beta blocker",
+    "description": "Slows heart rate and reduces blood pressure; used for hypertension, angina, and after heart attacks. Can worsen asthma in susceptible people; avoid abrupt stop."
+  },
+  "simvastatin": {
+    "displayName": "Simvastatin",
+    "drugClass": "Statin",
+    "description": "Lowers cholesterol. Many interacting drugs (especially CYP3A4 inhibitors) increase muscle toxicity risk; dosing limits apply with certain combinations."
+  },
+  "paracetamol": {
+    "displayName": "Paracetamol (acetaminophen)",
+    "drugClass": "Analgesic / antipyretic",
+    "description": "Pain and fever relief. Overdose causes serious liver injury; limit total daily amount and watch combination cold/flu products."
+  },
+  "acetaminophen": {
+    "displayName": "Acetaminophen (paracetamol)",
+    "drugClass": "Analgesic / antipyretic",
+    "description": "Pain and fever relief. Overdose causes serious liver injury; limit total daily amount and watch combination cold/flu products."
+  },
+  "ibuprofen": {
+    "displayName": "Ibuprofen",
+    "drugClass": "NSAID",
+    "description": "Pain, fever, and inflammation. Increases stomach ulcer and kidney risk; can reduce antiplatelet effect of low-dose aspirin and raise blood pressure."
+  },
+  "amoxicillin": {
+    "displayName": "Amoxicillin",
+    "drugClass": "Aminopenicillin antibiotic",
+    "description": "Broad-spectrum beta-lactam for many bacterial infections. Allergy (rashes to severe reactions) possible; completes prescribed course unless told otherwise."
+  },
+  "ciprofloxacin": {
+    "displayName": "Ciprofloxacin",
+    "drugClass": "Fluoroquinolone antibiotic",
+    "description": "Treats certain gram-negative and other infections. Tendon, nerve, and blood sugar side effects occur; strong enzyme interactions (e.g. theophylline, warfarin)."
+  },
+  "digoxin": {
+    "displayName": "Digoxin",
+    "drugClass": "Cardiac glycoside",
+    "description": "Strengthens heart contraction and controls some arrhythmias. Narrow index: toxicity causes nausea, vision changes, dangerous rhythms; levels and kidney function matter."
+  },
+  "clopidogrel": {
+    "displayName": "Clopidogrel",
+    "drugClass": "P2Y12 antiplatelet",
+    "description": "Prevents platelets from clumping after stents or stroke prevention. Bleeding risk with other anticoagulants or NSAIDs; effect reduced if not activated by liver enzymes."
+  },
+  "fluoxetine": {
+    "displayName": "Fluoxetine",
+    "drugClass": "SSRI antidepressant",
+    "description": "Used for depression, anxiety, and related conditions. Serotonin syndrome risk with other serotonergic drugs; long half-life and many CYP interactions."
+  },
+  "tramadol": {
+    "displayName": "Tramadol",
+    "drugClass": "Opioid analgesic (also weak serotonin reuptake)",
+    "description": "Moderate pain relief. Seizure risk and serotonin syndrome when combined with MAOIs, linezolid, or other serotonergics; respiratory depression with sedatives."
+  },
+  "lithium": {
+    "displayName": "Lithium",
+    "drugClass": "Mood stabilizer",
+    "description": "First-line for bipolar disorder maintenance. Narrow therapeutic range; dehydration, NSAIDs, ACE inhibitors, and diuretics can raise levels and cause toxicity."
+  },
+  "methotrexate": {
+    "displayName": "Methotrexate",
+    "drugClass": "Antimetabolite (DMARD / oncology dose-dependent)",
+    "description": "Low weekly doses for rheumatoid arthritis and psoriasis; high doses for cancer. Kidney clearance matters; folic acid often co-prescribed; many interacting drugs."
+  },
+  "rifampicin": {
+    "displayName": "Rifampicin (rifampin)",
+    "drugClass": "Rifamycin antibiotic / enzyme inducer",
+    "description": "Key drug for tuberculosis; strongly induces CYP450 and P-glycoprotein, lowering levels of many medicines (OCPs, warfarin, some HIV drugs) — interaction hotspot."
+  },
+  "rifampin": {
+    "displayName": "Rifampin (rifampicin)",
+    "drugClass": "Rifamycin antibiotic / enzyme inducer",
+    "description": "Key drug for tuberculosis; strongly induces many drug-metabolizing enzymes, often reducing levels of anticoagulants, contraception, and transplant drugs."
+  },
+  "sertraline": {
+    "displayName": "Sertraline",
+    "drugClass": "SSRI",
+    "description": "Treats depression and anxiety. GI upset and serotonin syndrome risk with linezolid, triptans, or other serotonergic agents; monitor with warfarin."
+  },
+  "prednisone": {
+    "displayName": "Prednisone",
+    "drugClass": "Glucocorticoid",
+    "description": "Anti-inflammatory and immunosuppressive. Raises blood sugar and BP, thins skin, and interacts with warfarin, NSAIDs, and vaccines; taper per clinician plan."
+  },
+  "albuterol": {
+    "displayName": "Albuterol (salbutamol)",
+    "drugClass": "Short-acting beta-2 agonist",
+    "description": "Relieves bronchospasm in asthma and COPD. Tremor and tachycardia; caution with other stimulants and non–beta-1-selective blockers."
+  },
+  "salbutamol": {
+    "displayName": "Salbutamol (albuterol)",
+    "drugClass": "Short-acting beta-2 agonist",
+    "description": "Relieves acute wheeze and bronchospasm. Common side effects: tremor, palpitations; watch stacking with other beta agonists."
+  },
+  "furosemide": {
+    "displayName": "Furosemide",
+    "drugClass": "Loop diuretic",
+    "description": "Removes fluid in heart failure, edema, and hypertension. Low potassium/magnesium; can raise lithium levels and affect kidney function with NSAIDs."
+  },
+  "gabapentin": {
+    "displayName": "Gabapentin",
+    "drugClass": "Anticonvulsant / neuropathic pain agent",
+    "description": "Used for neuropathic pain and seizures. Sedation and dizziness; dose adjusted in kidney disease; additive CNS depression with opioids."
+  },
+  "hydrochlorothiazide": {
+    "displayName": "Hydrochlorothiazide (HCTZ)",
+    "drugClass": "Thiazide diuretic",
+    "description": "Lowers blood pressure and treats mild fluid retention. Can lower potassium and sodium; raises uric acid; photosensitivity."
+  },
+  "levothyroxine": {
+    "displayName": "Levothyroxine",
+    "drugClass": "Thyroid hormone replacement",
+    "description": "Replaces T4 in hypothyroidism. Take consistently relative to food and supplements (calcium, iron reduce absorption); many drugs alter thyroid labs."
+  },
+  "apixaban": {
+    "displayName": "Apixaban",
+    "drugClass": "Direct oral anticoagulant (FXa inhibitor)",
+    "description": "Prevents and treats clots. Major bleeding risk with other anticoagulants/antiplatelets; strong dual P-gp/CYP3A4 inhibitors raise exposure."
+  },
+  "rivaroxaban": {
+    "displayName": "Rivaroxaban",
+    "drugClass": "Direct oral anticoagulant (FXa inhibitor)",
+    "description": "Used for DVT/PE and stroke prevention in atrial fibrillation. Food affects absorption for some doses; enzyme and transporter interactions matter."
+  },
+  "phenytoin": {
+    "displayName": "Phenytoin",
+    "drugClass": "Anticonvulsant (hydantoin)",
+    "description": "Controls seizures; narrow therapeutic index. Strong CYP inducer—reduces levels of many drugs; nonlinear kinetics at higher doses."
+  },
+  "carbamazepine": {
+    "displayName": "Carbamazepine",
+    "drugClass": "Anticonvulsant / mood stabilizer",
+    "description": "Treats epilepsy and trigeminal neuralgia. Potent enzyme inducer; serious rash (HLA screening in some populations); hyponatremia possible."
+  },
+  "azithromycin": {
+    "displayName": "Azithromycin",
+    "drugClass": "Macrolide antibiotic",
+    "description": "Treats respiratory and STIs. QT prolongation risk with other QT drugs; can raise digoxin levels; GI upset common."
+  },
+  "clarithromycin": {
+    "displayName": "Clarithromycin",
+    "drugClass": "Macrolide antibiotic",
+    "description": "Strong CYP3A4 inhibitor; markedly raises levels of statins, colchicine, and several others. QT prolongation possible."
+  },
+  "ketoconazole": {
+    "displayName": "Ketoconazole (systemic)",
+    "drugClass": "Azole antifungal / strong CYP3A4 inhibitor",
+    "description": "Potent inhibitor of many drug pathways; major interaction liability. Hepatotoxicity concern with oral use."
+  },
+  "diazepam": {
+    "displayName": "Diazepam",
+    "drugClass": "Benzodiazepine",
+    "description": "Anxiolytic, muscle relaxant, seizures. Sedation and respiratory depression with opioids or alcohol; long-acting active metabolites."
+  },
+  "morphine": {
+    "displayName": "Morphine",
+    "drugClass": "Opioid analgesic",
+    "description": "Strong pain control. Respiratory depression, constipation, sedation; additive CNS depression with benzodiazepines and gabapentinoids."
+  },
+  "codeine": {
+    "displayName": "Codeine",
+    "drugClass": "Opioid prodrug (CYP2D6)",
+    "description": "Mild–moderate pain and cough. Poor metabolizers get little benefit; ultra-rapid metabolizers risk toxicity—genetics matter."
+  },
+  "insulin": {
+    "displayName": "Insulin (general)",
+    "drugClass": "Hormone / antidiabetic",
+    "description": "Lowers blood glucose. Dosing adjusts with meals and activity; risk of hypoglycemia with other antidiabetics, alcohol, and missed meals."
+  },
+  "nitroglycerin": {
+    "displayName": "Nitroglycerin (GTN)",
+    "drugClass": "Nitrate vasodilator",
+    "description": "Relieves angina by reducing preload. Headache and hypotension; dangerous hypotension with PDE-5 inhibitors (sildenafil, etc.)."
+  },
+  "sildenafil": {
+    "displayName": "Sildenafil",
+    "drugClass": "PDE-5 inhibitor",
+    "description": "Erectile dysfunction and pulmonary hypertension. Contraindicated with nitrates; caution with alpha blockers and some antihypertensives."
+  },
+  "cyclosporine": {
+    "displayName": "Cyclosporine",
+    "drugClass": "Calcineurin inhibitor (immunosuppressant)",
+    "description": "Prevents transplant rejection. Narrow index; many drugs alter levels via CYP3A4 and P-gp; nephrotoxicity."
+  },
+  "tacrolimus": {
+    "displayName": "Tacrolimus",
+    "drugClass": "Calcineurin inhibitor",
+    "description": "Immunosuppression after transplant. Therapeutic drug monitoring required; macrolides and azoles frequently raise levels."
+  }
+}

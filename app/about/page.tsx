@@ -17,15 +17,16 @@ export default function AboutPage() {
           <div className="w-12 h-12 rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-6">
             <Server size={24} />
           </div>
-          <h2 className="text-xl font-bold text-navy-950 dark:text-white mb-4">Edge AI Inference</h2>
+          <h2 className="text-xl font-bold text-navy-950 dark:text-white mb-4">Edge AI inference</h2>
           <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-            Unlike legacy clinical decision support systems, all model inference occurs instantaneously on your localized device utilizing WebAssembly and ONNX Runtime. Your patient queries are never sent to external servers.
+            Interaction estimates run on your machine with WebAssembly tooling and a compact ONNX scorer. Requests you type are
+            resolved to structures locally when possible—we do not send your drug pairs to ClinicalDDI servers for scoring.
           </p>
           <ul className="space-y-3">
             {[
-              "INT8 Quantization for maximum performance",
-              "Sub-5ms median inference latency",
-              "Works completely offline in restricted environments"
+              "Structure pathway: lookups + fingerprints + ONNX classifier in-browser",
+              "Keeps pairing work on-device whenever the bundled resources cover your inputs",
+              "Works offline after the app and models finish their first download",
             ].map(item => (
               <li key={item} className="flex gap-3 text-sm font-semibold text-navy-800 dark:text-slate-300">
                 <CheckCircle size={18} className="text-brand-500 shrink-0" /> {item}
@@ -40,13 +41,14 @@ export default function AboutPage() {
           </div>
           <h2 className="text-xl font-bold text-navy-950 dark:text-white mb-4">Local history</h2>
           <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-            Checks and reports are stored on your device (IndexedDB) by default. Nothing is uploaded for model inference; optional Google sign-in can be enabled later for account features without changing the on-device engine.
+            Checks and backups stay in your browser by default—nothing uploads for model inference. Optional sign-in can arrive
+            later for account features without changing how the scorer runs locally.
           </p>
           <ul className="space-y-3">
             {[
-              "History, JSON export, and PDF reports in the app",
-              "No subscription or payment flows",
-              "Same WASM model for every visitor"
+              "History list, full-history PDF export, and per-check PDFs",
+              "No subscription or mandatory cloud account",
+              "Same bundled browser scorer for everyone who loads the site",
             ].map(item => (
               <li key={item} className="flex gap-3 text-sm font-semibold text-navy-800 dark:text-slate-300">
                 <CheckCircle size={18} className="text-amber-500 shrink-0" /> {item}
@@ -57,35 +59,52 @@ export default function AboutPage() {
       </div>
 
       <div className="glass rounded-3xl p-10 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
           <div>
             <h2 className="text-2xl font-bold text-navy-950 dark:text-white mb-2 flex items-center gap-3">
-              <Verified className="text-brand-500" /> BioBERT Target Roadmap
+              <Verified className="text-brand-500 shrink-0" /> Product roadmap
             </h2>
             <p className="text-slate-600 dark:text-slate-400">
-              Continuous validation and deployment pipeline for clinical intelligence capability.
+              Earlier releases experimented with BioBERT-style name models. ClinicalDDI Free now ships the{" "}
+              <span className="font-semibold text-slate-700 dark:text-slate-300">browser structure pathway only</span>—drug names
+              and SMILES resolved on-device into fingerprints, scored by the bundled ONNX model. All rollout phases below are{" "}
+              <span className="font-semibold text-slate-700 dark:text-slate-300">complete for this milestone</span>; future work
+              is maintenance and refinement, not a blocked roadmap.
             </p>
           </div>
-          <div className="px-4 py-2 bg-slate-100 dark:bg-navy-800 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-sm">
-            Current AUROC: <span className="text-brand-600 dark:text-brand-400">0.96</span>
+          <div className="px-4 py-3 bg-slate-100 dark:bg-navy-800 text-slate-700 dark:text-slate-300 rounded-xl font-semibold text-sm max-w-[220px] leading-snug shrink-0">
+            Scores are <span className="text-brand-600 dark:text-brand-400">informational tools</span>—confirm with prescribing
+            information or a clinician.
           </div>
         </div>
 
         <div className="space-y-4">
           {[
-            { label: "Phase I (Current)", desc: "TWOSIDES 63,000+ pairs & curated clinical baselines", status: "Active" },
-            { label: "Phase II (In Progress)", desc: "DrugBank 300,000+ commercial interaction profiles", status: "Validating" },
-            { label: "Phase III (Target)", desc: "1,000,000+ dynamic pairs utilizing aggregated FAERS data", status: "Upcoming" },
-          ].map((phase, i) => (
-            <div key={phase.label} className="flex flex-col md:flex-row md:items-center gap-4 p-4 rounded-2xl bg-white/60 dark:bg-navy-900 border border-slate-200/50 dark:border-white/5">
+            {
+              label: "Phase I — Data & labeling foundations",
+              desc: "Clinical-style severity targets, curated baselines, and training alignment so the fingerprint classifier could learn predictable Safe / Moderate / Severe behavior.",
+              status: "Complete",
+            },
+            {
+              label: "Phase II — Structure pathway in-browser",
+              desc: "RDKit in WASM, deterministic name→structure coverage, ONNX fingerprint scorer, graceful fallback when a model file is missing, and parity between drug-name vs SMILES flows.",
+              status: "Complete",
+            },
+            {
+              label: "Phase III — Experience & clinician-adjacent reporting",
+              desc: "Local history UX, downloadable backups, single-check PDFs, mechanism blurbs from bundled references, guardrails reminding users outcomes are informational.",
+              status: "Complete",
+            },
+          ].map((phase) => (
+            <div
+              key={phase.label}
+              className="flex flex-col md:flex-row md:items-center gap-4 p-4 rounded-2xl bg-white/60 dark:bg-navy-900 border border-slate-200/50 dark:border-white/5"
+            >
               <div className="flex-1">
                 <h4 className="font-bold text-navy-950 dark:text-white mb-1">{phase.label}</h4>
                 <p className="text-sm text-slate-500 dark:text-slate-400">{phase.desc}</p>
               </div>
-              <div className={`px-3 py-1 text-xs font-bold rounded-full border ${phase.status === "Active" ? "bg-green-100 border-green-200 text-green-700 dark:bg-green-900/30 dark:border-green-800 dark:text-green-400"
-                  : phase.status === "Validating" ? "bg-amber-100 border-amber-200 text-amber-700 dark:bg-amber-900/30 dark:border-amber-800 dark:text-amber-400"
-                    : "bg-slate-100 border-slate-200 text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400"
-                }`}>
+              <div className="px-3 py-1 text-xs font-bold rounded-full border bg-green-100 border-green-200 text-green-700 dark:bg-green-900/30 dark:border-green-800 dark:text-green-400 shrink-0">
                 {phase.status}
               </div>
             </div>
